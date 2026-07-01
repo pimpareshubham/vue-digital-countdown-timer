@@ -445,13 +445,13 @@ onUnmounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 4rem;
+  padding: 1.5rem clamp(1rem, 5vw, 4rem);
 }
 
 .logo {
   font-family: 'Outfit', sans-serif;
   font-weight: 800;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
   letter-spacing: 0.25em;
   display: flex;
   align-items: center;
@@ -473,7 +473,7 @@ onUnmounted(() => {
   color: #c084fc;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
   font-weight: 600;
   letter-spacing: 0.1em;
   transition: all 0.3s ease;
@@ -491,22 +491,23 @@ onUnmounted(() => {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  padding: 0 2rem;
+  padding: 0 clamp(1rem, 4vw, 2rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
+  box-sizing: border-box;
 }
 
 .title-section {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: clamp(1.5rem, 5vw, 3rem);
 }
 
 .title-section h1 {
   font-family: 'Outfit', sans-serif;
-  font-size: 3rem;
+  font-size: clamp(2rem, 6vw, 3.5rem);
   font-weight: 800;
   letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
@@ -517,7 +518,7 @@ onUnmounted(() => {
 
 .subtitle {
   color: #8e8e93;
-  font-size: 1.1rem;
+  font-size: clamp(0.85rem, 2.5vw, 1.1rem);
   font-weight: 300;
   letter-spacing: 0.05em;
 }
@@ -529,7 +530,7 @@ onUnmounted(() => {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 24px;
-  padding: 3rem;
+  padding: clamp(1rem, 4vw, 3rem);
   width: 100%;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   position: relative;
@@ -542,11 +543,11 @@ onUnmounted(() => {
 .progress-container {
   width: 100%;
   background: rgba(255, 255, 255, 0.03);
-  height: 28px;
+  height: clamp(20px, 3vw, 28px);
   border-radius: 14px;
   position: relative;
   overflow: hidden;
-  margin-bottom: 3rem;
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -563,7 +564,7 @@ onUnmounted(() => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 0.75rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.75rem);
   font-weight: 600;
   letter-spacing: 0.05em;
   color: #ffffff;
@@ -576,20 +577,21 @@ onUnmounted(() => {
   grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1fr auto 1.3fr;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: clamp(0.25rem, 1vw, 0.75rem);
 }
 
 .time-block {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .digits-wrapper {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 16px;
-  padding: 1.5rem 1rem;
+  padding: clamp(0.75rem, 2vw, 1.5rem) clamp(0.25rem, 1vw, 1rem);
   width: 100%;
   display: flex;
   align-items: baseline;
@@ -600,7 +602,7 @@ onUnmounted(() => {
 
 .digits {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 4rem;
+  font-size: clamp(1.8rem, 5.5vw, 4rem);
   font-weight: 700;
   color: #ffffff;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
@@ -609,21 +611,21 @@ onUnmounted(() => {
 
 .ms-digits {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.5rem;
+  font-size: clamp(0.75rem, 2vw, 1.5rem);
   color: #a855f7;
   font-weight: 400;
-  margin-left: 0.25rem;
+  margin-left: 0.15rem;
   opacity: 0.8;
   display: inline-block;
-  width: 3.5rem;
+  width: clamp(2rem, 4.5vw, 3.5rem);
 }
 
 .colon {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 4vw, 3rem);
   color: rgba(255, 255, 255, 0.2);
   animation: pulse 1s infinite;
-  padding-bottom: 1.5rem;
+  padding-bottom: clamp(0.75rem, 2vw, 1.5rem);
 }
 
 @keyframes pulse {
@@ -632,36 +634,39 @@ onUnmounted(() => {
 }
 
 .label {
-  font-size: 0.75rem;
+  font-size: clamp(0.55rem, 1.5vw, 0.75rem);
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: #8e8e93;
-  margin-top: 1rem;
+  margin-top: clamp(0.5rem, 1.5vw, 1rem);
   font-weight: 500;
+  text-align: center;
 }
 
 /* Controls panel drawer */
 .controls-panel {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 1.5rem 2.5rem;
+  padding: 1.25rem clamp(1rem, 3vw, 2.5rem);
   border-radius: 50px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  width: auto;
+  box-sizing: border-box;
 }
 
 .control-btn {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #ffffff;
-  padding: 0.75rem 1.5rem;
+  padding: 0.65rem 1.25rem;
   border-radius: 30px;
-  font-size: 0.875rem;
+  font-size: clamp(0.75rem, 1.8vw, 0.875rem);
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -689,25 +694,26 @@ onUnmounted(() => {
 .custom-date-picker {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 0.875rem;
+  gap: 0.5rem;
+  font-size: clamp(0.75rem, 1.8vw, 0.875rem);
 }
 
 .custom-date-picker label {
   color: #8e8e93;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .custom-date-picker input {
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #ffffff;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 20px;
   outline: none;
   cursor: pointer;
   font-family: inherit;
-  font-size: 0.875rem;
+  font-size: clamp(0.75rem, 1.8vw, 0.875rem);
   transition: border-color 0.2s;
 }
 
@@ -720,59 +726,67 @@ onUnmounted(() => {
   position: relative;
   z-index: 10;
   text-align: center;
-  padding: 2rem;
+  padding: 1.5rem;
   color: #48484a;
-  font-size: 0.75rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
   letter-spacing: 0.05em;
 }
 
 /* Responsive constraints */
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .grid-countdown {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 1.25rem 1rem;
   }
   
   .colon {
     display: none;
   }
   
-  .digits {
-    font-size: 3rem;
-  }
-  
-  .title-section h1 {
-    font-size: 2.25rem;
-  }
-  
   .countdown-card {
-    padding: 2rem;
+    border-radius: 20px;
   }
   
   .controls-panel {
     border-radius: 24px;
-    padding: 1.5rem;
+    padding: 1.25rem;
     width: 100%;
-    box-sizing: border-box;
+    justify-content: space-around;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .grid-countdown {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 0.75rem;
   }
   
   .header {
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
   }
-  
-  .digits {
-    font-size: 2.25rem;
+
+  .controls-panel {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
   }
-  
-  .ms-digits {
-    font-size: 1rem;
-    width: 2.5rem;
+
+  .control-btn, .custom-date-picker {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .custom-date-picker {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+  }
+
+  .custom-date-picker input {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
   }
 }
 </style>
+
