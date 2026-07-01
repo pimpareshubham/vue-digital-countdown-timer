@@ -239,15 +239,37 @@ const setupCanvas = () => {
   });
 };
 
+const isFullscreen = ref(false);
+
+const toggleFullscreen = () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().then(() => {
+      isFullscreen.value = true;
+    }).catch(err => {
+      console.error(`Error attempting to enable fullscreen: ${err.message}`);
+    });
+  } else {
+    document.exitFullscreen().then(() => {
+      isFullscreen.value = false;
+    });
+  }
+};
+
+const onFullscreenChange = () => {
+  isFullscreen.value = !!document.fullscreenElement;
+};
+
 onMounted(() => {
   initTargetDate();
   updateCountdown();
   countdownIntervalId = setInterval(updateCountdown, 10); // high precision
   setupCanvas();
+  document.addEventListener('fullscreenchange', onFullscreenChange);
 });
 
 onUnmounted(() => {
   clearInterval(countdownIntervalId);
+  document.removeEventListener('fullscreenchange', onFullscreenChange);
 });
 </script>
 
@@ -264,8 +286,14 @@ onUnmounted(() => {
       <div class="logo">
         <span class="logo-dot"></span> CHRONOS
       </div>
-      <div class="badge" :class="{ 'paused': isPaused }">
-        {{ isPaused ? 'PAUSED' : 'ACTIVE' }}
+      <div class="header-actions">
+        <button class="fullscreen-btn" @click="toggleFullscreen" :title="isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'">
+          <span v-if="isFullscreen">🗗</span>
+          <span v-else>🗖</span>
+        </button>
+        <div class="badge" :class="{ 'paused': isPaused }">
+          {{ isPaused ? 'PAUSED' : 'ACTIVE' }}
+        </div>
       </div>
     </header>
 
@@ -446,6 +474,32 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem clamp(1rem, 5vw, 4rem);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.fullscreen-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.fullscreen-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
 }
 
 .logo {
